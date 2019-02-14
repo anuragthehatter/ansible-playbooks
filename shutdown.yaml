@@ -1,0 +1,14 @@
+#ansible-playbook -i "machine1,machine2," shutdown.yaml
+- hosts: all
+  become_method: sudo
+  user: root
+  vars:
+    #ansible_user: fedora
+    #ansible_become_pass: fedora
+    #ansible_python_interpreter: /usr/bin/python3
+    ansible_ssh_private_key_file: /home/anusaxen/.ssh/libra.pem
+  tasks:
+  - name: shutdown machines
+    command: /sbin/shutdown -h now
+    sudo: yes
+  
